@@ -1,0 +1,7 @@
+[user]
+	email = yahn007@outlook.com
+	name = Cuzzo
+[core]
+	autocrlf = true
+[color]
+	ui = true
