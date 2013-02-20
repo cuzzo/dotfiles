@@ -1,6 +1,5 @@
 set number
 
-set tabstop=2
 if has("autocmd")
   " Drupal ]= *.module and *.install files.
   augroup module
