@@ -1,4 +1,8 @@
 set number
+set hlsearch
+set incsearch
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 if has("autocmd")
   " Drupal ]= *.module and *.install files.
@@ -10,5 +14,10 @@ if has("autocmd")
   autocmd BufWritePre *.module,*.install,*.inc,*.test :%s/\s\+$//e
 endif
 
-syntax on
 filetype plugin on
+
+let mapleader=","
+
+nmap <silent> <Leader>ev :e $MYVIMRC<CR>
+nmap <silent> <Leader>sv :so $MYVIMRC<CR>
+nmap <silent> <Leader>/ :nohlsearch<CR>

@@ -4,3 +4,5 @@ set expandtab
 set smarttab
 set smartindent
 set autoindent
+
+syntax on
