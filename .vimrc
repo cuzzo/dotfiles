@@ -4,14 +4,23 @@ set incsearch
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+fun! <SID>StripTrailingWhitespace()
+  let l = line(".")
+  let c = col(".")
+  let s = @/
+  %s/\s\+$//e
+  call cursor(l, c)
+  let @/ = s
+endfun
+
 if has("autocmd")
   " Drupal ]= *.module and *.install files.
   augroup module
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.module setlocal filetype=php
+    autocmd BufRead,BufNewFile *.install setlocal filetype=php
+    autocmd BufRead,BufNewFile *.test setlocal filetype=php
   augroup END
-  autocmd BufWritePre *.module,*.install,*.inc,*.test :%s/\s\+$//e
+  autocmd FileType python,javascript,php autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
 endif
 
 filetype plugin on

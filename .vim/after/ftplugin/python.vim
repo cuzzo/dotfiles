@@ -1,6 +1,8 @@
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-set smartindent
-set autoindent
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal expandtab
+setlocal smarttab
+setlocal smartindent
+setlocal autoindent
+
+syntax on
