@@ -5,7 +5,10 @@ SCM_THEME_PROMPT_DIRTY=' ✗'
 SCM_THEME_PROMPT_CLEAN=' ✓'
 SCM_THEME_PROMPT_PREFIX=' |'
 SCM_THEME_PROMPT_SUFFIX='|'
-SCM_THEME_PROMPT_CHAR_POS=1
+
+SCM_THEME_TEMPLATE_GIT='PBTS'
+SCM_THEME_TEMPLATE_GIT='PBTS'
+SCM_THEME_TEMPLATE_HG='PB:CTS'
 
 SCM_GIT='git'
 SCM_GIT_CHAR='±'
@@ -147,21 +150,17 @@ function virtualenv_prompt {
 # backwards-compatibility
 function git_prompt_info {
   git_prompt_vars
-  if [[ "$SCM_THEME_PROMPT_CHAR_POS" == "1" ]]; then
-    echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
-  else
-    echo -e "$SCM_PREFIX$SCM_STATE$SCM_BRANCH$SCM_SUFFIX"
-  fi
+  template_render ${SCM_THEME_TEMPLATE_GIT}
 }
 
 function svn_prompt_info {
   svn_prompt_vars
-  echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
+  template_render ${SCM_THEME_TEMPLATE_SVN}
 }
 
 function hg_prompt_info() {
   hg_prompt_vars
-  echo -e "$SCM_PREFIX$SCM_BRANCH:${SCM_CHANGE#*:}$SCM_STATE$SCM_SUFFIX"
+  template_render ${SCM_THEME_TEMPLATE_HG}
 }
 
 function scm_char {
@@ -171,4 +170,13 @@ function scm_char {
 
 function prompt_char {
     scm_char
+}
+
+function template_render()
+{
+  TP=$(echo ${SCM_PREFIX} | sed -e 's/\\/. /g')
+  TT=$(echo ${SCM_STATE} | sed -e 's/\\/. /g')
+  TS=$(echo ${SCM_SUFFIX} | sed -e 's/\\/. /g')
+  TPL=$(echo $1 | sed -e "s/P/${TP}/" -e "s/B/${SCM_BRANCH}/" -e "s/T/${TT}/" -e "s/S/${TS}/" -e "s/C/${SCM_CHANGE#*:}/")
+  echo -e $(echo ${TPL} | sed -e 's/. /\\/g')
 }
