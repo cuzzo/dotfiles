@@ -10,7 +10,7 @@ prompt_setter() {
   history -a
   history -c
   history -r
-  PS1="${white}$(scm_char) ${yellow}[\u] ${normal}\w$(scm_prompt_info)${normal}:\$ "
+  PS1="${white}$(scm_char) ${purple}[\u] ${normal}\W$(scm_prompt_info)${normal}:\$ "
   PS2='> '
   PS4='+ '
 }
@@ -26,10 +26,10 @@ SCM_THEME_TEMPLATE_GIT="PTBS"
 SCM_THEME_TEMPLATE_SVN="PTBS"
 SCM_THEME_TEMPLATE_HG="PTBCS"
 
-SCM_NONE_CHAR='◽'
+SCM_NONE_CHAR='-'
 SCM_THEME_PROMPT_DIRTY="${red}"
 SCM_THEME_PROMPT_CLEAN="${green}"
-SCM_THEME_PROMPT_PREFIX=" ${yellow}("
-SCM_THEME_PROMPT_SUFFIX="${yellow})"
+SCM_THEME_PROMPT_PREFIX=" ${purple}("
+SCM_THEME_PROMPT_SUFFIX="${purple})"
 RVM_THEME_PROMPT_PREFIX=" ("
 RVM_THEME_PROMPT_SUFFIX=")"
