@@ -10,7 +10,7 @@ prompt_setter() {
   history -a
   history -c
   history -r
-  PS1="${white}$(scm_char) ${purple}[\u] ${normal}\W$(scm_prompt_info)${normal}:\$ "
+  PS1="${white}$(scm_char) ${purple}[\u@\h] ${normal}\W$(scm_prompt_info)${normal}:\$ "
   PS2='> '
   PS4='+ '
 }
