@@ -20,7 +20,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.install setlocal filetype=php
     autocmd BufRead,BufNewFile *.test setlocal filetype=php
   augroup END
-  autocmd FileType python,javascript,php autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
+  autocmd FileType python,javascript,php,ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
 endif
 
 filetype plugin on
