@@ -16,6 +16,15 @@ fun! <SID>StripTrailingWhitespace()
   let @/ = s
 endfun
 
+" colorcolumn
+fun! <SID>LineLimit(count)
+  if exists('+colorcolumn')
+    let &colorcolumn=a:count
+  else
+    au BufWinEnter * let w:m2=matchadd("ErrorMsg", "\%>" a:count "v.\+", -1)
+  endif
+endfun
+
 if has("autocmd")
   " Drupal ]= *.module and *.install files.
   augroup module
@@ -24,6 +33,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.test setlocal filetype=php
   augroup END
   autocmd FileType python,javascript,php autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
+  autocmd FileType python :call <SID>LineLimit(79)
+  autocmd FileType javascript,php :call LineLimit(80)
 endif
 
 filetype plugin on
@@ -40,12 +51,12 @@ set laststatus=2
 set t_Co=256
 colorscheme Tomorrow-Night
 
-if !exists('g:airline_symbols')
+if !exists("g:airline_symbols")
   let g:airline_symbols={}
 endif
 let g:airline_symbols.space="\ua0"
-let g:airline_left_sep='>'
-let g:airline_right_sep='>'
+let g:airline_left_sep=">"
+let g:airline_right_sep=">"
 let g:airline_detect_iminsert=1
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
