@@ -2,11 +2,9 @@ set number
 set hlsearch
 set incsearch
 set list
+set nocompatible
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
-set laststatus=2
-set t_Co=256
-colorscheme Tomorrow-Night
 call pathogen#infect()
 
 fun! <SID>StripTrailingWhitespace()
@@ -25,7 +23,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.install setlocal filetype=php
     autocmd BufRead,BufNewFile *.test setlocal filetype=php
   augroup END
-  autocmd FileType python,javascript,php,ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
+  autocmd FileType python,javascript,php autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
 endif
 
 filetype plugin on
@@ -38,6 +36,10 @@ nmap <silent> <Leader>/ :nohlsearch<CR>
 
 
 " Theme
+set laststatus=2
+set t_Co=256
+colorscheme Tomorrow-Night
+
 if !exists('g:airline_symbols')
   let g:airline_symbols={}
 endif
