@@ -4,6 +4,11 @@ set incsearch
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+set laststatus=2
+set t_Co=256
+colorscheme Tomorrow-Night
+call pathogen#infect()
+
 fun! <SID>StripTrailingWhitespace()
   let l = line(".")
   let c = col(".")
@@ -30,3 +35,16 @@ let mapleader=","
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 nmap <silent> <Leader>/ :nohlsearch<CR>
+
+
+" Theme
+if !exists('g:airline_symbols')
+  let g:airline_symbols={}
+endif
+let g:airline_symbols.space="\ua0"
+let g:airline_left_sep='>'
+let g:airline_right_sep='>'
+let g:airline_detect_iminsert=1
+let g:airline_detect_paste=1
+let g:airline_detect_modified=1
+let g:airline#extensions#tabline#enabled=1
