@@ -34,7 +34,7 @@ if has("autocmd")
   augroup END
   autocmd FileType python,javascript,php,ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
   autocmd FileType python :call <SID>LineLimit(79)
-  autocmd FileType javascript,php,ruby :call LineLimit(80)
+  autocmd FileType javascript,php,ruby :call <SID>LineLimit(80)
 endif
 
 filetype plugin on
