@@ -31,6 +31,7 @@ net_avg_samples 2
 override_utf8_locale no
 use_spacer none
 color0 5b6dad
+color1 b5fd37
 
 TEXT
 $color0}${alignc}${nodename} -- ${uptime_short}
@@ -54,13 +55,13 @@ $color0} $color${diskiograph 16,140 000000 7f8ed3 90000}
 
 $color0}Processes:$color $processes | $running_processes
 ${color} CPU Usage         CPU
-${color #ddaa00} ${top name 1}${offset -10} ${top cpu 1}
+$color1} ${top name 1}${offset -10} ${top cpu 1}
 $color0} ${top name 2}${offset -10} ${top cpu 2}
 $color0} ${top name 3}${offset -10} ${top cpu 3}
 $color0} ${top name 4}${offset -10} ${top cpu 4}
 
 ${color} MEM Usage         MEM
-${color #ddaa00} ${top_mem name 1}${offset -10} ${top_mem mem 1}
+$color1} ${top_mem name 1}${offset -10} ${top_mem mem 1}
 $color0} ${top_mem name 2}${offset -10} ${top_mem mem 2}
 $color0} ${top_mem name 3}${offset -10} ${top_mem mem 3}
 $color0} ${top_mem name 4}${offset -10} ${top_mem mem 4}
