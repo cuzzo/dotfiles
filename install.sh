@@ -5,6 +5,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -s .gitconfig $HOME_DIR
 ln -s .vim $HOME_DIR
 ln -s .vimrc $HOME_DIR
+ln -s .conkyrc $HOME_DIR
 
 if [ -z $BASH_IT ]; then
 	echo "bash-it not installed; bash-it customizations not installed.";
