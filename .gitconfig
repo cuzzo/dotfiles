@@ -2,6 +2,6 @@
 	email = yahn007@outlook.com
 	name = Cuzzo
 [core]
-	autocrlf = true
+	editor = "vim"
 [color]
 	ui = true
