@@ -45,6 +45,7 @@ nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>sv :so $MYVIMRC<CR>
 nmap <silent> <Leader>/ :nohlsearch<CR>
 
+inoremap jj <Esc>
 
 " Theme
 set laststatus=2
