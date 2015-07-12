@@ -1,18 +1,19 @@
 #! /usr/bin/env bash
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SLR_DIR=$(python -c "import os.path; print os.path.relpath('./', os.path.expanduser('~'))")
 
-ln -sf .gitconfig $HOME_DIR/.gitconfig
-ln -sf .vim $HOME_DIR/.vim
-ln -sf .vimrc $HOME_DIR/.vimrc
-ln -sf .conkyrc $HOME_DIR/.conkyrc
-ln -sf .tmux.conf $HOME_DIR/.tmux.conf
+ln -sf $SLR_DIR/.gitconfig $HOME/.gitconfig
+ln -sf $SLR_DIR/.vim $HOME/.vim
+ln -sf $SLR_DIR/.vimrc $HOME/.vimrc
+ln -sf $SLR_DIR/.conkyrc $HOME/.conkyrc
+ln -sf $SLR_DIR/.tmux.conf $HOME/.tmux.conf
 
 if [ -z $BASH_IT ]; then
 	echo "bash-it not installed; bash-it customizations not installed.";
 	echo "Ensure that .bash_profile is invoked during bash startup.";
 else
-	cp -R $DOTFILES_DIR/themes/* $BASH_IT/themes
-	cp -R $DOTFILES_DIR/custom/* $BASH_IT/custom
+	ln -sf $SLR_DIR/themes/* $BASH_IT/themes
+	ln -sf $SLR_DIR/custom/* $BASH_IT/custom
 	echo "Remember to set \$BASH_IT_THEME in .bash_profile";
 fi
