@@ -3,11 +3,12 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SLR_DIR=$(python -c "import os.path; print os.path.relpath('./', os.path.expanduser('~'))")
 
-ln -sf $SLR_DIR/.gitconfig $HOME/.gitconfig
-ln -sf $SLR_DIR/.vim $HOME/.vim
-ln -sf $SLR_DIR/.vimrc $HOME/.vimrc
-ln -sf $SLR_DIR/.conkyrc $HOME/.conkyrc
-ln -sf $SLR_DIR/.tmux.conf $HOME/.tmux.conf
+# Symlink dotfiles.
+files=".gitconfig .vim .vimrc .tmux.conf .conkyrc"
+for file in $files; do
+	unlink $HOME/$file 2> /dev/null
+	ln -sf $SLR_DIR/$file $HOME/$file
+done
 
 if [ -z $BASH_IT ]; then
 	echo "bash-it not installed; bash-it customizations not installed.";
