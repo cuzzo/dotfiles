@@ -2,11 +2,11 @@
 
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -s .gitconfig $HOME_DIR
-ln -s .vim $HOME_DIR
-ln -s .vimrc $HOME_DIR
-ln -s .conkyrc $HOME_DIR
-ln -s .tmux.conf $HOME_DIR
+ln -sf .gitconfig $HOME_DIR/.gitconfig
+ln -sf .vim $HOME_DIR/.vim
+ln -sf .vimrc $HOME_DIR/.vimrc
+ln -sf .conkyrc $HOME_DIR/.conkyrc
+ln -sf .tmux.conf $HOME_DIR/.tmux.conf
 
 if [ -z $BASH_IT ]; then
 	echo "bash-it not installed; bash-it customizations not installed.";
