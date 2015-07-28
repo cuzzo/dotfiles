@@ -62,3 +62,6 @@ let g:airline_detect_iminsert=1
 let g:airline_detect_paste=1
 let g:airline_detect_modified=1
 let g:airline#extensions#tabline#enabled=1
+
+" ctrlp
+let g:ctrlp_custom_ignore = "node_modules"
