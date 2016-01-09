@@ -35,6 +35,7 @@ if has("autocmd")
   autocmd FileType python,javascript,php,ruby,lua autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespace()
   autocmd FileType python :call <SID>LineLimit(79)
   autocmd FileType javascript,php,ruby,lua :call <SID>LineLimit(80)
+  autocmd FileType html setlocal spell
 endif
 
 filetype plugin on
