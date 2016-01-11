@@ -33,7 +33,7 @@ function repo_is_dirty {
 function scm_prompt {
   local invader=$(echo -e "\xf0\x9f\x91\xbe")
   local prompt="$FCYN\u$RS@$FCYN\h$RS > $FBLE\W$RS"
-  local untracked_files=$(git status --porcelain 2>/dev/null| grep "^??" | wc -l)
+  local untracked_files=$(git status --porcelain 2>/dev/null| grep "^??" | wc -l | tr -d '[[:space:]]')
 
   if is_repo; then
     branch=$(git symbolic-ref --short HEAD)
