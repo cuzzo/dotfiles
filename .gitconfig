@@ -7,3 +7,5 @@
 	ui = true
 [push]
 	simple = true
+[merge]
+	conflictstyle = diff3
